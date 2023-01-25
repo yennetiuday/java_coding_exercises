@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Exercise001 {
     public String capitalizeWord(final String word) {
-        final String capitalizedWord = initCap(word) + word.substring(1);
+        final String capitalizedWord = initCap(word) + word.toLowerCase().substring(1);
         return capitalizedWord;
     }
 
@@ -13,13 +13,13 @@ public class Exercise001 {
     }
 
     public String generateInitials(final String firstName, final String lastName) {
-        final String generatedInitials = initCap(firstName) + ". " + initCap(lastName);
+        final String generatedInitials = initCap(firstName) + "." + initCap(lastName);
         return generatedInitials;
     }
 
     public double addVat(final double originalPrice, final double vatRate) {
         final double finalValue = originalPrice + originalPrice*vatRate/100;
-        return finalValue;
+        return Math.round(finalValue*100.0)/100.0;
     }
 
     public String reverse(final String sentence) {
@@ -28,6 +28,6 @@ public class Exercise001 {
     }
 
     public int countLinuxUsers(final List<User> users) {
-        return (int)users.stream().filter(user -> user.getOperatingSystem().equalsIgnoreCase("linux")).count();
+        return (int)users.stream().filter(user -> user.getType().equalsIgnoreCase("linux")).count();
     }
 }
